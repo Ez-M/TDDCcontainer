@@ -19,15 +19,16 @@ public class PlayerManager : MonoBehaviour
         inputs.Movement.West.performed += WestFunc;
         inputs.Movement.East.performed += EastFunc;
     }
+
+    #region -InputFuncs-
+
+        #region -MovementInputs-
     public void NorthFunc(InputAction.CallbackContext ctx)
     {
-        if(ctx.performed)
-        {
-        Debug.Log ("North input called.");
-
-        inputs.Movement.North.performed -= NorthFunc;
-
-        }
+    if(ctx.performed)
+    {
+    Debug.Log ("North input called.");
+    }
 
     }
     public void SouthFunc(InputAction.CallbackContext ctx)
@@ -45,4 +46,8 @@ public class PlayerManager : MonoBehaviour
 
         Debug.Log ("East input Added.");
     }
+        #endregion
+
+        
+    #endregion
 }

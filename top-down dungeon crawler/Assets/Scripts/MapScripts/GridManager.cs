@@ -9,7 +9,9 @@ public class GridManager : MonoBehaviour
     public Tilemap backgroundMap;
     public Tilemap gameTilesMap;
 
-    public List<List<TileBase>> tilesList;
+    public Dictionary<int, Entity> allEntities;
+
+    public Dictionary<Vector3, List<Entity>> tilecontents;
 
     private static GridManager Instance;
     public static GridManager instance {get{return Instance;}}
@@ -23,9 +25,7 @@ public class GridManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(cellCenterFromWorld(new Vector3(1, 1, 1)));
-        Debug.Log(cellCenterFromWorld(new Vector3(1, 3, 0)));
-        Debug.Log(cellCenterFromWorld(new Vector3(4, 1, 0)));
+
     }
 
     // Update is called once per frame
@@ -54,3 +54,5 @@ public class GridManager : MonoBehaviour
 
     
 }
+
+

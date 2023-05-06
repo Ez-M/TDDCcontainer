@@ -76,17 +76,25 @@ public class GridManager : MonoBehaviour
 
 
     public void MoveEntityByDirection(Vector3 moveDirection, Entity _entity)
-    {   // N y1, S y-1, W x-1, E x1
-    
-        if(tilecontents.ContainsKey(_entity.transform.position + moveDirection))
+    {   // North = y1, South = y-1, West = x-1, East = x1 //
+
+        Vector3 targetPosition = _entity.transform.position + moveDirection;
+
+        if(!CheckTileBlocksMovement(targetPosition))
         {
-            if(tilecontents[_entity.transform.position + moveDirection].blocksMovement == false)
-            {
-                _entity.gameObject.transform.position += moveDirection;
-            }
-        }
-        // if(CheckObstacles)
-        // 
+            _entity.transform.position = targetPosition;     
+
+        }   else {Debug.Log("Tile Blocks Movement");}
+
+
+    }
+
+    public bool CheckTileBlocksMovement(Vector3 targetPosition)
+    {
+        if(tilecontents.TryGetValue(targetPosition, out TileContainer value))
+        {
+            return value.blocksMovement;
+        } else {return false;}
     }
 }
 
@@ -99,7 +107,7 @@ public class TileContainer
 
 
 
-
+#region SeralizedDicts
 public abstract class UnitySerializedDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
 {
 	[SerializeField]
@@ -139,3 +147,5 @@ public class StringScriptableObjectDictionary : UnitySerializedDictionary<string
 public class Vector3TileContainerDictionary : UnitySerializedDictionary<Vector3, TileContainer> { }
 [Serializable]
 public class IntEntityDictionary : UnitySerializedDictionary<int, Entity> { }
+
+#endregion

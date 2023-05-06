@@ -28,6 +28,7 @@ public class PlayerManager : MonoBehaviour
     if(ctx.performed)
     {
     Debug.Log ("North input called.");
+    GridManager.instance.MoveEntityByDirection(new Vector3(0, 1, 0), player.GetComponent<Entity>());
     }
 
     }

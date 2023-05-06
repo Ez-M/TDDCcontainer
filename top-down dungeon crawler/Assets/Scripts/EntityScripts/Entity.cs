@@ -16,6 +16,11 @@ public class Entity : MonoBehaviour
 
     private GridManager gridManager;
 
+    [SerializeField]
+    private bool blocksMovement;
+
+    public bool BlocksMovement{get => blocksMovement;}
+
     public void Awake()
     {
 

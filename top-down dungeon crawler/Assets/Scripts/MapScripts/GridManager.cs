@@ -60,7 +60,8 @@ public class GridManager : MonoBehaviour
 
     internal void RegisterLocation(Vector3 EntityPos, Entity _entity)
  {
-       var cellCenterpos = cellCenterFromWorld(EntityPos);
+    
+       var cellCenterpos = cellCenterFromWorld(_entity.transform.position);
        if(tilecontents.ContainsKey(cellCenterpos))
         {
             tilecontents[cellCenterpos].contents.Add(_entity);
@@ -72,12 +73,28 @@ public class GridManager : MonoBehaviour
 
             }
     }
+
+
+    public void MoveEntityByDirection(Vector3 moveDirection, Entity _entity)
+    {   // N y1, S y-1, W x-1, E x1
+    
+        if(tilecontents.ContainsKey(_entity.transform.position + moveDirection))
+        {
+            if(tilecontents[_entity.transform.position + moveDirection].blocksMovement == false)
+            {
+                _entity.gameObject.transform.position += moveDirection;
+            }
+        }
+        // if(CheckObstacles)
+        // 
+    }
 }
 
 [Serializable]
 public class TileContainer
 {
     public List<Entity> contents = new List<Entity>();
+    public bool blocksMovement = false;
 }
 
 

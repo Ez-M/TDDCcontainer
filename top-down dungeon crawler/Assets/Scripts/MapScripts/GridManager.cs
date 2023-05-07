@@ -63,19 +63,7 @@ public class GridManager : MonoBehaviour
     }
 
 
-    public void MoveEntityByDirection(Vector3 moveDirection, Entity _entity)
-    {   // North = y1, South = y-1, West = x-1, East = x1 //
 
-        Vector3 targetPosition = _entity.transform.position + moveDirection;
-
-        if(!CheckTileBlocksMovement(targetPosition))
-        {
-            _entity.transform.position = targetPosition;     
-
-        }   else {Debug.Log("Tile Blocks Movement");}
-
-
-    }
 
     public bool CheckTileBlocksMovement(Vector3 targetPosition)
     {//honestly needs to check if the tile is within the map boundaries but I haven't set that yet

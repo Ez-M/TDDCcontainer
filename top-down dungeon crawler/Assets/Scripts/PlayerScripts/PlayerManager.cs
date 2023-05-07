@@ -6,9 +6,12 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField]
-    Player player;
+    private Player player;
+    public Player Player { get => player;}
 
-    Inputs inputs;
+    private Inputs inputs;
+    public Inputs Inputs {get => inputs;}
+
 
     void Awake()
     {
@@ -28,7 +31,7 @@ public class PlayerManager : MonoBehaviour
     if(ctx.performed)
     {
     Debug.Log ("North input called.");
-    GridManager.instance.MoveEntityByDirection(new Vector3(0, 1, 0), player.GetComponent<Entity>());
+    GridManager.instance.MoveEntityByDirection(new Vector3(0, 1, 0), Player.GetComponent<Entity>());
     }
 
     }

@@ -24,22 +24,10 @@ public class GridManager : MonoBehaviour
 
     void Awake()
     {
-
         verifyInstanceSingleton();
 
-
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public Vector3 cellCenterFromWorld(Vector3 worldPos)
     {
@@ -90,19 +78,24 @@ public class GridManager : MonoBehaviour
     }
 
     public bool CheckTileBlocksMovement(Vector3 targetPosition)
-    {
-        if(tilecontents.TryGetValue(targetPosition, out TileContainer value))
+    {//honestly needs to check if the tile is within the map boundaries but I haven't set that yet
+        if(tilecontents.TryGetValue(targetPosition, out TileContainer _tileContainer))
         {
-            return value.blocksMovement;
+            foreach(var item in _tileContainer.contents)
+            {
+                if(item.BlocksMovement == true)
+                {return true;}
+            } return false;
         } else {return false;}
     }
+
 }
 
 [Serializable]
 public class TileContainer
 {
     public List<Entity> contents = new List<Entity>();
-    public bool blocksMovement = false;
+    // public bool blocksMovement = false;
 }
 
 

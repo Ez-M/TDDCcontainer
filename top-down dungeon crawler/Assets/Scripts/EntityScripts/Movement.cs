@@ -2,21 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public static class Movement
 {
-    private Entity entity;
-    private Player player;
+    private static GridManager gridManager = GridManager.instance;
 
-    // public void moveEntityByDirection(Vector3 moveDirection)
-    // {   // N y1, S y-1, W x-1, E x1
-    
-    //     if(GridManager.instance.tilecontents.ContainsKey(entity.transform.position + moveDirection))
-    //     {
-    //         if(tilecontents[entity.transform.position + moveDirection])
-    //     }
-    //     // if(CheckObstacles)
-    //     // 
-    // }
+    public static void MoveEntityByDirection(Vector3 moveDirection, Entity _entity)
+    {   // North = y1, South = y-1, West = x-1, East = x1 //
+
+        Vector3 targetPosition = _entity.transform.position + moveDirection;
+
+        if(!gridManager.CheckTileBlocksMovement(targetPosition))
+        {
+            _entity.transform.position = targetPosition;     
+
+        }   else {Debug.Log("Tile Blocks Movement");}
+
+
+    }
 
 
 }

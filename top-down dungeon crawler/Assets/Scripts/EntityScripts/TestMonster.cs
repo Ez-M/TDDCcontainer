@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Entity
+public class TestMonster : Entity
 {
     
     // Start is called before the first frame update
@@ -15,5 +15,10 @@ public class Player : Entity
     void Update()
     {
         
+    }
+
+    public override void IsBumped()
+    {
+        Debug.Log("A spoopy monster!");
     }
 }

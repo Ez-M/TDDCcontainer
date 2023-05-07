@@ -7,7 +7,7 @@ using UnityEditor;
 
 
 [Serializable]
-public class Entity : MonoBehaviour
+public abstract class Entity : MonoBehaviour
 {
     public static int nextId = 1;
     private int id;
@@ -49,13 +49,9 @@ public class Entity : MonoBehaviour
         }
     }
 
-    // private void RegisterLocation()
-    // {
+    public virtual void IsBumped()
+    {//what to do when bumped by another entity, usually the player
 
-    //     if(gridManager.tilecontents.ContainsKey(gridManager.cellCenterFromWorld(gameObject.transform.position)))
-    //     {
-    //         gridManager.tilecontents[gridManager.cellCenterFromWorld(gameObject.transform.position)].Add(this);
-    //     }
-    // }
+    }
 
 }

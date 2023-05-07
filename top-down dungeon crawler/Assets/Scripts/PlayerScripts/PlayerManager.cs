@@ -31,7 +31,7 @@ public class PlayerManager : MonoBehaviour
     if(ctx.performed)
     {
         Debug.Log ("North input called.");
-        Movement.MoveEntityByDirection(new Vector3(0, 1, 0), Player.GetComponent<Entity>());
+        Movement.MoveEntityByDirection(new Vector3(0, 1, 0), Player);
     }
 
     }
@@ -39,21 +39,21 @@ public class PlayerManager : MonoBehaviour
     {
 
         Debug.Log ("South input Added.");
-        Movement.MoveEntityByDirection(new Vector3(0, -1, 0), Player.GetComponent<Entity>());
+        Movement.MoveEntityByDirection(new Vector3(0, -1, 0), Player);
 
     }
     public void WestFunc(InputAction.CallbackContext ctx)
     {
 
         Debug.Log ("West input Added.");
-        Movement.MoveEntityByDirection(new Vector3(-1, 0, 0), Player.GetComponent<Entity>());
+        Movement.MoveEntityByDirection(new Vector3(-1, 0, 0), Player);
 
     }
     public void EastFunc(InputAction.CallbackContext ctx)
     {
 
         Debug.Log ("East input Added.");
-        Movement.MoveEntityByDirection(new Vector3(1, 0, 0), Player.GetComponent<Entity>());
+        Movement.MoveEntityByDirection(new Vector3(1, 0, 0), Player);
 
     }
         #endregion

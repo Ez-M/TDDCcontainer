@@ -16,4 +16,9 @@ public class Player : Entity
     {
         
     }
+
+    public override void Bump(Entity bumpTarget)
+    {
+        bumpTarget.IsBumped(this);
+    }
 }

@@ -17,8 +17,8 @@ public class TestMonster : Entity
         
     }
 
-    public override void IsBumped()
+    public override void IsBumped(Entity bumper)
     {
-        Debug.Log("A spoopy monster!");
+        Debug.Log("A spoopy monster! bumped by " + bumper);
     }
 }

@@ -11,11 +11,15 @@ public static class Movement
 
         Vector3 targetPosition = _entity.transform.position + moveDirection;
 
-        if(!gridManager.CheckTileBlocksMovement(targetPosition))
+        if (gridManager.CheckTileBlocksMovement(targetPosition, out var blocker))
         {
-            _entity.transform.position = targetPosition;     
+            _entity.Bump(blocker);
+        }
+        else
+        {
+            _entity.transform.position = targetPosition;
 
-        }   else {Debug.Log("Tile Blocks Movement");}
+        }
 
 
     }

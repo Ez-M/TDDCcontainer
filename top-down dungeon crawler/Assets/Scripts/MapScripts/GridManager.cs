@@ -20,7 +20,7 @@ public class GridManager : MonoBehaviour
     public Vector3TileContainerDictionary tilecontents = new Vector3TileContainerDictionary();
 
     private static GridManager Instance;
-    public static GridManager instance {get{return Instance;}}
+    public static GridManager instance { get { return Instance; } }
 
     void Awake()
     {
@@ -37,44 +37,59 @@ public class GridManager : MonoBehaviour
 
     private void verifyInstanceSingleton()
     {
-        if(Instance != null && Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(this.gameObject);
-        } else
+        }
+        else
         {
             Instance = this;
         }
     }
 
     internal void RegisterLocation(Vector3 EntityPos, Entity _entity)
- {
-    
-       var cellCenterpos = cellCenterFromWorld(_entity.transform.position);
-       if(tilecontents.ContainsKey(cellCenterpos))
+    {
+
+        var cellCenterpos = cellCenterFromWorld(_entity.transform.position);
+        if (tilecontents.ContainsKey(cellCenterpos))
         {
             tilecontents[cellCenterpos].contents.Add(_entity);
-        } else
-            {
-                var tileContainer = new TileContainer();
-                tileContainer.contents.Add(_entity);
-                tilecontents.Add(cellCenterpos, tileContainer);
+        }
+        else
+        {
+            var tileContainer = new TileContainer();
+            tileContainer.contents.Add(_entity);
+            tilecontents.Add(cellCenterpos, tileContainer);
 
-            }
+        }
     }
 
 
 
 
-    public bool CheckTileBlocksMovement(Vector3 targetPosition)
+    public bool CheckTileBlocksMovement(Vector3 targetPosition, out Entity blocker)
     {//honestly needs to check if the tile is within the map boundaries but I haven't set that yet
-        if(tilecontents.TryGetValue(targetPosition, out TileContainer _tileContainer))
+        if (tilecontents.TryGetValue(targetPosition, out TileContainer _tileContainer))
         {
-            foreach(var item in _tileContainer.contents)
+            foreach (var item in _tileContainer.contents)
             {
-                if(item.BlocksMovement == true)
-                {return true;}
-            } return false;
-        } else {return false;}
+                if (item.BlocksMovement == true)
+                {
+                    blocker = item;
+
+                    return true;
+                }
+            }
+            blocker = null;
+
+            return false;
+        }
+        else
+        {
+            blocker = null;
+
+            return false;
+        }
     }
 
 }
@@ -91,31 +106,31 @@ public class TileContainer
 #region SeralizedDicts
 public abstract class UnitySerializedDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
 {
-	[SerializeField]
-	private List<TKey> keyData = new List<TKey>();
-	
-	[SerializeField]
-	private List<TValue> valueData = new List<TValue>();
+    [SerializeField]
+    private List<TKey> keyData = new List<TKey>();
+
+    [SerializeField]
+    private List<TValue> valueData = new List<TValue>();
 
     void ISerializationCallbackReceiver.OnAfterDeserialize()
     {
-		this.Clear();
-		for (int i = 0; i < this.keyData.Count && i < this.valueData.Count; i++)
-		{
-			this[this.keyData[i]] = this.valueData[i];
-		}
+        this.Clear();
+        for (int i = 0; i < this.keyData.Count && i < this.valueData.Count; i++)
+        {
+            this[this.keyData[i]] = this.valueData[i];
+        }
     }
 
     void ISerializationCallbackReceiver.OnBeforeSerialize()
     {
-		this.keyData.Clear();
-		this.valueData.Clear();
+        this.keyData.Clear();
+        this.valueData.Clear();
 
-		foreach (var item in this)
-		{
-			this.keyData.Add(item.Key);
-			this.valueData.Add(item.Value);
-		}
+        foreach (var item in this)
+        {
+            this.keyData.Add(item.Key);
+            this.valueData.Add(item.Value);
+        }
     }
 }
 [Serializable]

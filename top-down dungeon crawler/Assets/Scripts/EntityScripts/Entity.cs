@@ -49,8 +49,13 @@ public abstract class Entity : MonoBehaviour
         }
     }
 
-    public virtual void IsBumped()
+    public virtual void IsBumped(Entity bumper)
     {//what to do when bumped by another entity, usually the player
+
+    }
+
+    public virtual void Bump(Entity bumpTarget)
+    {
 
     }
 

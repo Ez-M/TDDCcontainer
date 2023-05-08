@@ -21,6 +21,9 @@ public abstract class Entity : MonoBehaviour
 
     public bool BlocksMovement{get => blocksMovement;}
 
+    private Health health;
+    public Health Health {get => health;}
+
     public void Awake()
     {
 

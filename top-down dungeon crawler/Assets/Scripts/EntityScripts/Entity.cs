@@ -28,7 +28,7 @@ public abstract class Entity : MonoBehaviour
     {
         gameObject.TryGetComponent<Health>(out health);
 
-        gridManager = GridManager.instance;
+        gridManager = GridManager.Instance;
 
         AssignID();
         gridManager.RegisterLocation(gameObject.transform.position, this);

@@ -19,13 +19,21 @@ public class GridManager : MonoBehaviour
 
     public Vector3TileContainerDictionary tilecontents = new Vector3TileContainerDictionary();
 
-    private static GridManager Instance;
-    public static GridManager instance { get { return Instance; } }
+    private static GridManager instance;
+    public static GridManager Instance { get { return instance; } }
 
     void Awake()
     {
         verifyInstanceSingleton();
 
+    }
+
+        private void OnDisable()
+    {
+        if(instance == this)
+        {
+            instance = null;
+        }
     }
 
 
@@ -43,9 +51,11 @@ public class GridManager : MonoBehaviour
         }
         else
         {
-            Instance = this;
+            instance = this;
         }
     }
+
+
 
     internal void RegisterLocation(Vector3 EntityPos, Entity _entity)
     {

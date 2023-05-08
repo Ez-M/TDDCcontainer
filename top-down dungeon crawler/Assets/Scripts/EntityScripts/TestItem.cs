@@ -35,7 +35,8 @@ public abstract class ItemData
     public void InitAsNew()
     {
         Effects = new Dictionary<string, int>();
-        // Effects = ItemTypeDatabase.ItemsByCode[itemCode];
+       ItemData exampleItem = ItemTypeDatabase.Instance.ItemsByCode[ItemCode];
+        Effects = exampleItem.Effects;
     }
 
 

@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class TestMonster : Entity
 {
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public override void IsBumped(Entity bumper)
     {
-        Debug.Log("A spoopy monster! bumped by " + bumper);
+        Debug.Log(bumper + " kicks the spoopy monster!");
+
+       var newHealth = this.Health.DamageHealth(1);
+
+       Debug.Log("TestMonster health is now " + newHealth);
+
+    }
+
+    public override void InitStats()
+    {
+        Health.SetBaseHealth(10);
     }
 }

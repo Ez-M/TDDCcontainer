@@ -26,11 +26,14 @@ public abstract class Entity : MonoBehaviour
 
     public void Awake()
     {
+        gameObject.TryGetComponent<Health>(out health);
 
         gridManager = GridManager.instance;
 
         AssignID();
         gridManager.RegisterLocation(gameObject.transform.position, this);
+
+        InitStats();
 
     }
 
@@ -60,6 +63,11 @@ public abstract class Entity : MonoBehaviour
     public virtual void Bump(Entity bumpTarget)
     {
 
+    }
+
+    public virtual void InitStats()
+    {
+        
     }
 
 }

@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 232514762}
   - component: {fileID: 232514763}
   - component: {fileID: 232514764}
+  - component: {fileID: 232514765}
   m_Layer: 0
   m_Name: testEntity (4)
   m_TagString: Untagged
@@ -221,6 +222,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blocksMovement: 1
+--- !u!114 &232514765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232514761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cca7138adbd2b4a4ea11991ae97a14c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &305069888
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,6 +245,7 @@ GameObject:
   - component: {fileID: 305069889}
   - component: {fileID: 305069890}
   - component: {fileID: 305069891}
+  - component: {fileID: 305069892}
   m_Layer: 0
   m_Name: testEntity (3)
   m_TagString: Untagged
@@ -319,6 +333,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blocksMovement: 1
+--- !u!114 &305069892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 305069888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cca7138adbd2b4a4ea11991ae97a14c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +512,18 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &696693251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696693247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cca7138adbd2b4a4ea11991ae97a14c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &873425341
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,6 +535,7 @@ GameObject:
   - component: {fileID: 873425342}
   - component: {fileID: 873425343}
   - component: {fileID: 873425344}
+  - component: {fileID: 873425345}
   m_Layer: 0
   m_Name: testEntity
   m_TagString: Untagged
@@ -584,6 +623,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blocksMovement: 1
+--- !u!114 &873425345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873425341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cca7138adbd2b4a4ea11991ae97a14c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &902250471
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,6 +677,7 @@ GameObject:
   - component: {fileID: 1061950015}
   - component: {fileID: 1061950016}
   - component: {fileID: 1061950017}
+  - component: {fileID: 1061950018}
   m_Layer: 0
   m_Name: testEntity (6)
   m_TagString: Untagged
@@ -713,6 +765,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blocksMovement: 1
+--- !u!114 &1061950018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061950014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cca7138adbd2b4a4ea11991ae97a14c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1071814824
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,6 +788,7 @@ GameObject:
   - component: {fileID: 1071814825}
   - component: {fileID: 1071814826}
   - component: {fileID: 1071814827}
+  - component: {fileID: 1071814828}
   m_Layer: 0
   m_Name: testEntity (5)
   m_TagString: Untagged
@@ -811,6 +876,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blocksMovement: 1
+--- !u!114 &1071814828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071814824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cca7138adbd2b4a4ea11991ae97a14c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1188952324
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,6 +1073,7 @@ GameObject:
   - component: {fileID: 1294783194}
   - component: {fileID: 1294783195}
   - component: {fileID: 1294783196}
+  - component: {fileID: 1294783197}
   m_Layer: 0
   m_Name: testEntity (2)
   m_TagString: Untagged
@@ -1083,6 +1161,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blocksMovement: 1
+--- !u!114 &1294783197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294783193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cca7138adbd2b4a4ea11991ae97a14c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1388389119
 GameObject:
   m_ObjectHideFlags: 0
@@ -9735,6 +9825,7 @@ GameObject:
   - component: {fileID: 1721771021}
   - component: {fileID: 1721771022}
   - component: {fileID: 1721771023}
+  - component: {fileID: 1721771024}
   m_Layer: 0
   m_Name: testEntity (1)
   m_TagString: Untagged
@@ -9822,6 +9913,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blocksMovement: 1
+--- !u!114 &1721771024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721771020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cca7138adbd2b4a4ea11991ae97a14c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6266551565605785361
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ using UnityEditor;
 
 
 [Serializable]
-public abstract class Health : MonoBehaviour
+public class Health : MonoBehaviour
 {
     private int baseMaxHealth;
     public int BaseMaxhealth{get => baseMaxHealth;}
@@ -23,29 +23,31 @@ public abstract class Health : MonoBehaviour
     public int SetBaseHealth(int _setTo)
     {
         if(_setTo > 0)
-        {currentHealth += _setTo;}
-        return currentHealth;
+        {baseMaxHealth += _setTo;}
+        return baseMaxHealth;
     }
 
     #region  maxHealth
     public int SetMaxHealth(int _setTo)
     {
-        currentHealth = _setTo;
-        return currentHealth;
+        maxHealth = _setTo;
+        if (currentHealth > maxHealth)
+        {currentHealth = maxHealth;}
+        return maxHealth;
     }
     public int DamageMaxHealth(int _damage)
     {
         if(_damage > 0)
-        {currentHealth -= _damage;}
+        {maxHealth -= _damage;}
         if (currentHealth > maxHealth)
         {currentHealth = maxHealth;}
-        return currentHealth;
+        return maxHealth;
     }
     public int HealMaxHealth(int _heal)
     {
         if(_heal > 0)
-        {currentHealth += _heal;}
-        return currentHealth;
+        {maxHealth += _heal;}
+        return maxHealth;
     }
     #endregion
 

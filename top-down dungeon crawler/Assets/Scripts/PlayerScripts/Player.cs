@@ -5,20 +5,17 @@ using UnityEngine;
 public class Player : Entity
 {
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public override void Bump(Entity bumpTarget)
     {
         bumpTarget.IsBumped(this);
+        Health.HealMaxHealth(1);
     }
+
+public override void InitStats()
+    {
+        Health.SetBaseHealth(10);
+    }
+    
 }

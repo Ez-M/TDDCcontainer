@@ -16,6 +16,8 @@ public class Player : Entity
 public override void InitStats()
     {
         Health.SetBaseHealth(10);
+        Health.ResetToBase();
+
     }
     
 }

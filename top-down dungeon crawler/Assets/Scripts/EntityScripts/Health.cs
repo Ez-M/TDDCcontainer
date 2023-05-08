@@ -27,6 +27,12 @@ public class Health : MonoBehaviour
         return baseMaxHealth;
     }
 
+    public void ResetToBase()
+    {   // may require a reworked function for calculating effective health vs raw health due to stats and gear
+        maxHealth = baseMaxHealth;
+        currentHealth = maxHealth;
+    }
+
     #region  maxHealth
     public int SetMaxHealth(int _setTo)
     {

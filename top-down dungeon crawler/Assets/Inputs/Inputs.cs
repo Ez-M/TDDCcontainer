@@ -116,7 +116,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
             ""id"": ""05330d06-123d-4253-a8fd-74dc3046bd46"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Grab Item"",
                     ""type"": ""Button"",
                     ""id"": ""b2c1b716-dd0f-4ff8-94b9-b680b2b559f9"",
                     ""expectedControlType"": ""Button"",
@@ -129,11 +129,11 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""19e998b7-3d81-4d54-977e-7df0e8ea94d8"",
-                    ""path"": """",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Grab Item"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -150,7 +150,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         m_Movement_East = m_Movement.FindAction("East", throwIfNotFound: true);
         // Interactions
         m_Interactions = asset.FindActionMap("Interactions", throwIfNotFound: true);
-        m_Interactions_Newaction = m_Interactions.FindAction("New action", throwIfNotFound: true);
+        m_Interactions_GrabItem = m_Interactions.FindAction("Grab Item", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -267,12 +267,12 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
     // Interactions
     private readonly InputActionMap m_Interactions;
     private IInteractionsActions m_InteractionsActionsCallbackInterface;
-    private readonly InputAction m_Interactions_Newaction;
+    private readonly InputAction m_Interactions_GrabItem;
     public struct InteractionsActions
     {
         private @Inputs m_Wrapper;
         public InteractionsActions(@Inputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Interactions_Newaction;
+        public InputAction @GrabItem => m_Wrapper.m_Interactions_GrabItem;
         public InputActionMap Get() { return m_Wrapper.m_Interactions; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -282,16 +282,16 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_InteractionsActionsCallbackInterface != null)
             {
-                @Newaction.started -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnNewaction;
+                @GrabItem.started -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnGrabItem;
+                @GrabItem.performed -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnGrabItem;
+                @GrabItem.canceled -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnGrabItem;
             }
             m_Wrapper.m_InteractionsActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
+                @GrabItem.started += instance.OnGrabItem;
+                @GrabItem.performed += instance.OnGrabItem;
+                @GrabItem.canceled += instance.OnGrabItem;
             }
         }
     }
@@ -305,6 +305,6 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
     }
     public interface IInteractionsActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnGrabItem(InputAction.CallbackContext context);
     }
 }

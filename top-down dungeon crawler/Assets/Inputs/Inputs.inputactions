@@ -94,7 +94,7 @@
             "id": "05330d06-123d-4253-a8fd-74dc3046bd46",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Grab Item",
                     "type": "Button",
                     "id": "b2c1b716-dd0f-4ff8-94b9-b680b2b559f9",
                     "expectedControlType": "Button",
@@ -107,11 +107,11 @@
                 {
                     "name": "",
                     "id": "19e998b7-3d81-4d54-977e-7df0e8ea94d8",
-                    "path": "",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Grab Item",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

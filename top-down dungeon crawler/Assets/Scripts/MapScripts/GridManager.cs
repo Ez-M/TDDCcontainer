@@ -111,6 +111,22 @@ public class GridManager : MonoBehaviour
         }
     }
 
+    public ItemData GetFirstItemInCell(Vector3 _worldPos)
+    {
+        var targetTile = cellCenterFromWorld(_worldPos);
+        var tileContents = 
+        tilecontents[targetTile].contents;
+        foreach (var entity in tileContents)
+        {
+            if(entity is GroundItem groundItem && groundItem.isPickable)
+            {
+                return groundItem.itemData;
+            }
+        }
+        return null;
+    }
+
+
 }
 
 [Serializable]

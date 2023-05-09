@@ -42,7 +42,7 @@ public class ItemObject : ScriptableObject
 
     public virtual ItemData OnGrab(ItemData _baseItem, Entity _grabber)
     {
-        if (_grabber.Inventory.inventory.CheckSpaceTemp())
+        if (_grabber.InventoryObject.inventory.CheckSpaceTemp())
         { return _baseItem; }
         else
         {

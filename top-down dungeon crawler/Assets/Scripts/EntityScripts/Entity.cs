@@ -28,8 +28,8 @@ public abstract class Entity : MonoBehaviour
     public Health Health {get => health;}
     
     [SerializeField]
-    private InventoryObject inventory;
-    public InventoryObject Inventory{get => inventory;}
+    private InventoryObject inventoryObject;
+    public InventoryObject InventoryObject{get => inventoryObject;}
 
     public SpriteRenderer spriteRenderer;
     public Sprite sprite;

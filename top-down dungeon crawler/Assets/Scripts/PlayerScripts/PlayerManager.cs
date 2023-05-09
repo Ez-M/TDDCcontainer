@@ -12,15 +12,21 @@ public class PlayerManager : MonoBehaviour
     private Inputs inputs;
     public Inputs Inputs {get => inputs;}
 
+    private GridManager gridManager;
+
 
     void Awake()
     {
+           gridManager = GridManager.Instance;
+
+
         inputs = new Inputs();
         inputs.Enable();
         inputs.Movement.North.performed += NorthFunc;
         inputs.Movement.South.performed += SouthFunc;
         inputs.Movement.West.performed += WestFunc;
         inputs.Movement.East.performed += EastFunc;
+        inputs.Interactions.GrabItem.performed += GrabItem;
     }
 
     #region -InputFuncs-
@@ -58,6 +64,28 @@ public class PlayerManager : MonoBehaviour
     }
         #endregion
 
-        
+        public void GrabItem(InputAction.CallbackContext ctx)
+        {
+            var itemToGrab = gridManager.GetFirstItemInCell(player.transform.position);
+
+            if(player.InventoryObject.inventory.CheckSpaceTemp())
+            {
+                foreach(var slot in player.InventoryObject.inventory.Slots)
+                {
+
+                    if(slot.item.ItemCode < 0)
+                    {
+                        slot.UpdateSlot(1, itemToGrab, 1);
+                        return;
+                    }
+                }
+            }
+        }
+
     #endregion
 }
+
+                // if(entity.GetType() == typeof(ItemObject))
+                // {
+                    
+                // }

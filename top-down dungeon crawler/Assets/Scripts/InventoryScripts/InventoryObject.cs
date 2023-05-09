@@ -34,7 +34,7 @@ public class Inventory
     {
         for (int x = 0; x < Slots.Length; x++)
         {
-            if (Slots[x].item == null)
+            if (Slots[x].item.ItemCode < 0)
             { return true; }
         }
         return false;

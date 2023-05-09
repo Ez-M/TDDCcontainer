@@ -34,10 +34,6 @@ public class ItemObject : ScriptableObject
     private Sprite sprite;
     public Sprite Sprite { get => sprite; }
 
-    [SerializeField]
-
-    private SpriteRenderer spriteRenderer;
-    public SpriteRenderer SpriteRenderer { get => spriteRenderer; }
 
     [SerializeField]
     private ItemData baseItem;
@@ -52,8 +48,6 @@ public class ItemObject : ScriptableObject
         {
             return null;
         }
-
-
     }
 
     public virtual ItemData OnUse(ItemData _baseItem, Entity _user)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Consumable Object", menuName = "Inventory System/Items/Consumables")]
-public class EquipmentObject : ItemObject
+public class ConsumableItem : ItemObject
 {
 
     // public float attackBonus;

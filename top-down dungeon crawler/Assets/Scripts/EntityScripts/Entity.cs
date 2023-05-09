@@ -20,6 +20,9 @@ public abstract class Entity : MonoBehaviour
     private bool blocksMovement;
 
     public bool BlocksMovement{get => blocksMovement;}
+    public bool isPickable;
+
+    public bool IsPickable{get => isPickable;}
 
     private Health health;
     public Health Health {get => health;}
@@ -28,16 +31,25 @@ public abstract class Entity : MonoBehaviour
     private InventoryObject inventory;
     public InventoryObject Inventory{get => inventory;}
 
+    public SpriteRenderer spriteRenderer;
+    public Sprite sprite;
+
+    
+
     public virtual void Awake()
     {
         gameObject.TryGetComponent<Health>(out health);
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
 
         gridManager = GridManager.Instance;
 
         AssignID();
         gridManager.RegisterLocation(gameObject.transform.position, this);
+        
 
         InitStats();
+        UpdateSprite(sprite);
 
     }
 
@@ -72,6 +84,12 @@ public abstract class Entity : MonoBehaviour
     public virtual void InitStats()
     {
         
+    }
+
+    public void UpdateSprite(Sprite _sprite)
+    {
+        sprite = _sprite;
+        spriteRenderer.sprite = sprite;
     }
 
 }

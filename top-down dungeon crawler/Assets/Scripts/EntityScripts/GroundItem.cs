@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class GroundItem : Entity
 {
-    public Sprite sprite;
-    public SpriteRenderer spriteRenderer;
     public ItemData itemData;
     public ItemObject itemObject;
 
     public override void Awake()
     {
         base.Awake();
+
+
+
+    }
+
+    public override void InitStats()
+    {
         itemData = new ItemData(itemObject.BaseItem);
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         sprite = itemObject.Sprite;
-
-
+        isPickable = true;
     }
 
 

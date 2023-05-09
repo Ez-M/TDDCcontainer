@@ -57,24 +57,33 @@ public class GridManager : MonoBehaviour
 
 
 
-    internal void RegisterLocation(Vector3 EntityPos, Entity _entity)
+    public void RegisterLocation(Vector3 EntityPos, Entity _entity)
     {
 
-        var cellCenterpos = cellCenterFromWorld(_entity.transform.position);
-        if (tilecontents.ContainsKey(cellCenterpos))
+        var cellCenterPos = cellCenterFromWorld(EntityPos);
+        if (tilecontents.ContainsKey(cellCenterPos))
         {
-            tilecontents[cellCenterpos].contents.Add(_entity);
+            tilecontents[cellCenterPos].contents.Add(_entity);
         }
         else
         {
             var tileContainer = new TileContainer();
             tileContainer.contents.Add(_entity);
-            tilecontents.Add(cellCenterpos, tileContainer);
+            tilecontents.Add(cellCenterPos, tileContainer);
 
         }
     }
 
-
+    public void ClearEntityLocation(Vector3 _entityPos, Entity _entity)
+    {
+        var cellCenterPos = cellCenterFromWorld(_entityPos);
+        if(tilecontents[cellCenterPos].contents.Contains(_entity))
+        {
+            tilecontents[cellCenterPos].contents.Remove(_entity);
+        }
+        if(tilecontents[cellCenterPos].contents.Count < 1)
+        {tilecontents.Remove(cellCenterPos);}
+    }
 
 
     public bool CheckTileBlocksMovement(Vector3 targetPosition, out Entity blocker)

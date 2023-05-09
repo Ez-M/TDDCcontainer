@@ -17,7 +17,9 @@ public static class Movement
         }
         else
         {
+            gridManager.ClearEntityLocation(_entity.transform.position, _entity);
             _entity.transform.position = targetPosition;
+            gridManager.RegisterLocation(targetPosition, _entity);
 
         }
 

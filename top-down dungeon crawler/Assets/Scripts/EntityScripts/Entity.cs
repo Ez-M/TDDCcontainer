@@ -23,6 +23,10 @@ public abstract class Entity : MonoBehaviour
 
     private Health health;
     public Health Health {get => health;}
+    
+    [SerializeField]
+    private Inventory inventory;
+    public Inventory Inventory{get => inventory;}
 
     public void Awake()
     {

@@ -46,12 +46,14 @@ public class ItemObject : ScriptableObject
 
     public virtual ItemData OnGrab(ItemData _baseItem, Entity _grabber)
     {
-        if (_grabber.Inventory.CheckSpace(inventorySize))
+        if (_grabber.Inventory.inventory.CheckSpaceTemp())
         { return _baseItem; }
         else
         {
             return null;
         }
+
+
     }
 
     public virtual ItemData OnUse(ItemData _baseItem, Entity _user)

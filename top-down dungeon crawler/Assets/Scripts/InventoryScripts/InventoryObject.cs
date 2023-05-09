@@ -7,10 +7,12 @@ using UnityEditor;
 
 
 [Serializable]
-public abstract class InventoryObject : ScriptableObject
+[CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
+
+public class InventoryObject : ScriptableObject
 {
     public string savePath;
-    public Inventory inventory; //was container
+    public Inventory inventory;
 
 
 }
@@ -18,7 +20,9 @@ public abstract class InventoryObject : ScriptableObject
 [System.Serializable]
 public class Inventory
 {
-    public InventorySlot[] Slots = new InventorySlot[24]; //was named Items
+    public Entity owner;
+
+    public InventorySlot[] Slots = new InventorySlot[24];
     public void Clear()
     {
         for (int i = 0; i < Slots.Length; i++)
@@ -26,7 +30,17 @@ public class Inventory
             Slots[i].UpdateSlot(-1, new ItemData(), 0);
         }
     }
+    public bool CheckSpaceTemp()
+    {
+        for (int x = 0; x < Slots.Length; x++)
+        {
+            if (Slots[x].item == null)
+            { return true; }
+        }
+        return false;
+    }
 
+    //REVIEW THIS//
     public bool CheckSpace(int _sizeToCheck)
     {
         for (var x = 0; x < Slots.Length; x++)

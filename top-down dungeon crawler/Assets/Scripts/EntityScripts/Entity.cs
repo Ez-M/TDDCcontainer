@@ -25,10 +25,10 @@ public abstract class Entity : MonoBehaviour
     public Health Health {get => health;}
     
     [SerializeField]
-    private Inventory inventory;
-    public Inventory Inventory{get => inventory;}
+    private InventoryObject inventory;
+    public InventoryObject Inventory{get => inventory;}
 
-    public void Awake()
+    public virtual void Awake()
     {
         gameObject.TryGetComponent<Health>(out health);
 

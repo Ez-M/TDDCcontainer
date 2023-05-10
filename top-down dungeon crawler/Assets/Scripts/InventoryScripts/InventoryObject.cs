@@ -22,7 +22,7 @@ public class Inventory
 {
     public Entity owner;
 
-    public InventorySlot[] Slots = new InventorySlot[24];
+    public InventorySlot[] Slots = new InventorySlot[15];
     public void Clear()
     {
         for (int i = 0; i < Slots.Length; i++)

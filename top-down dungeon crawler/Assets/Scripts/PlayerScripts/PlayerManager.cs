@@ -9,6 +9,12 @@ public class PlayerManager : MonoBehaviour
     private Player player;
     public Player Player { get => player;}
 
+    private InventoryObject inventoryObject;
+    public InventoryObject InventoryObject {get => inventoryObject;}
+
+    private PlayerInventoryHandler playerInventoryHandler;
+    private PlayerInventoryHandler PlayerInventoryHandler {get => playerInventoryHandler;}
+
     private Inputs inputs;
     public Inputs Inputs {get => inputs;}
 
@@ -17,8 +23,9 @@ public class PlayerManager : MonoBehaviour
 
     void Awake()
     {
-           gridManager = GridManager.Instance;
-
+        gridManager = GridManager.Instance;
+        playerInventoryHandler = gameObject.GetComponent<PlayerInventoryHandler>();
+        inventoryObject = playerInventoryHandler.inventory;
 
         inputs = new Inputs();
         inputs.Enable();
@@ -27,6 +34,23 @@ public class PlayerManager : MonoBehaviour
         inputs.Movement.West.performed += WestFunc;
         inputs.Movement.East.performed += EastFunc;
         inputs.Interactions.GrabItem.performed += GrabItem;
+    }
+
+    void OnEnable()
+    {
+        player.SetInventoryObject(inventoryObject);
+    }
+
+        private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            inventoryObject.Save();
+        }
+        if(Input.GetKeyDown(KeyCode.X))
+        {
+            inventoryObject.Load();
+        }
     }
 
     #region -InputFuncs-
@@ -84,8 +108,3 @@ public class PlayerManager : MonoBehaviour
 
     #endregion
 }
-
-                // if(entity.GetType() == typeof(ItemObject))
-                // {
-                    
-                // }

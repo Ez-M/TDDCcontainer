@@ -88,6 +88,11 @@ public class ItemData
         itemCode = _itemData.itemCode;
     }
 
+    public void SetItemCode(int _value)
+    {
+        itemCode = _value;
+    }
+
 }
 
 

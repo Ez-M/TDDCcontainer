@@ -91,5 +91,9 @@ public abstract class Entity : MonoBehaviour
         sprite = _sprite;
         spriteRenderer.sprite = sprite;
     }
+    public virtual void SetInventoryObject(InventoryObject _Inventory)
+    {
+        inventoryObject = _Inventory;
+    }
 
 }

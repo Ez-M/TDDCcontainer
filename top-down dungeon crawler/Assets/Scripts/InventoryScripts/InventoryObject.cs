@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 [Serializable]
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory")]
@@ -15,12 +18,45 @@ public class InventoryObject : ScriptableObject
     public Inventory inventory;
 
 
+    #region Save&Load
+
+    [ContextMenu("Save")]
+    public void Save()
+    {
+        IFormatter formatter = new BinaryFormatter();
+        Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Create, FileAccess.Write);
+        formatter.Serialize(stream, inventory);
+        stream.Close();
+        Debug.Log(string.Concat(Application.persistentDataPath, savePath));
+    }
+
+    [ContextMenu("Load")]
+    public void Load()
+    {
+        if(File.Exists(string.Concat(Application.persistentDataPath, savePath)))
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Open, FileAccess.Read);
+            Inventory newContainer = (Inventory)formatter.Deserialize(stream);
+            for (int i = 0; i < newContainer.Slots.Length; i++)
+            {
+                inventory.Slots[i].UpdateSlot(newContainer.Slots[i].ID, newContainer.Slots[i].item, newContainer.Slots[i].amount);
+            }
+            stream.Close();
+
+        }
+
+    }
+
+    #endregion
+
+
 }
 
 [System.Serializable]
 public class Inventory
 {
-    public Entity owner;
+    // public Entity owner;
 
     public InventorySlot[] Slots = new InventorySlot[15];
     public void Clear()
@@ -70,6 +106,10 @@ public class Inventory
         }
         return false;
     }
+
+
+
+
 
 }
 

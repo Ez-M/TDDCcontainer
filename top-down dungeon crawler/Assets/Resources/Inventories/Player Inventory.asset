@@ -12,82 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f69730a1ce82146b045dc2f0eaee50, type: 3}
   m_Name: Player Inventory
   m_EditorClassIdentifier: 
-  savePath: 
+  savePath: /Inventory.Save
   inventory:
     owner: {fileID: 0}
     Slots:
-    - AllowedItems: 
-      ID: 1
-      item:
-        Name: Test Consumable
-        Type: 0
-        itemID: -1
-        itemCode: -1
-      amount: 1
-    - AllowedItems: 
-      ID: -1
-      item:
-        Name: 
-        Type: 0
-        itemID: -1
-        itemCode: -1
-      amount: 0
-    - AllowedItems: 
-      ID: -1
-      item:
-        Name: 
-        Type: 0
-        itemID: -1
-        itemCode: -1
-      amount: 0
-    - AllowedItems: 
-      ID: -1
-      item:
-        Name: 
-        Type: 0
-        itemID: -1
-        itemCode: -1
-      amount: 0
-    - AllowedItems: 
-      ID: -1
-      item:
-        Name: 
-        Type: 0
-        itemID: -1
-        itemCode: -1
-      amount: 0
-    - AllowedItems: 
-      ID: -1
-      item:
-        Name: 
-        Type: 0
-        itemID: -1
-        itemCode: -1
-      amount: 0
-    - AllowedItems: 
-      ID: -1
-      item:
-        Name: 
-        Type: 0
-        itemID: -1
-        itemCode: -1
-      amount: 0
-    - AllowedItems: 
-      ID: -1
-      item:
-        Name: 
-        Type: 0
-        itemID: -1
-        itemCode: -1
-      amount: 0
-    - AllowedItems: 
-      ID: -1
-      item:
-        Name: 
-        Type: 0
-        itemID: -1
-        itemCode: -1
-      amount: 0
     - AllowedItems: 
       ID: -1
       item:

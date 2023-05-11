@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class ItemTypeDatabase : ScriptableObject, ISerializationCallbackReceiver
 {
+    [SerializeReference]
     public ItemObject[] Items;
     [SerializeField]
     private Dictionary<int, ItemObject> itemsByCode = new Dictionary<int, ItemObject>();

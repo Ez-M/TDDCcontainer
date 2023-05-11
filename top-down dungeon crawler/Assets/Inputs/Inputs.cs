@@ -138,6 +138,34 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Inventory"",
+            ""id"": ""8b769b46-83b3-4992-82d9-71eca90d2ba9"",
+            ""actions"": [
+                {
+                    ""name"": ""Toggle Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""9163fbe5-3e97-4f02-84f1-9230572addd6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""2c10a3c5-852a-426f-8f78-cf4bcfe3ea7d"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Toggle Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -151,6 +179,9 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         // Interactions
         m_Interactions = asset.FindActionMap("Interactions", throwIfNotFound: true);
         m_Interactions_GrabItem = m_Interactions.FindAction("Grab Item", throwIfNotFound: true);
+        // Inventory
+        m_Inventory = asset.FindActionMap("Inventory", throwIfNotFound: true);
+        m_Inventory_ToggleInventory = m_Inventory.FindAction("Toggle Inventory", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -296,6 +327,39 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
         }
     }
     public InteractionsActions @Interactions => new InteractionsActions(this);
+
+    // Inventory
+    private readonly InputActionMap m_Inventory;
+    private IInventoryActions m_InventoryActionsCallbackInterface;
+    private readonly InputAction m_Inventory_ToggleInventory;
+    public struct InventoryActions
+    {
+        private @Inputs m_Wrapper;
+        public InventoryActions(@Inputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ToggleInventory => m_Wrapper.m_Inventory_ToggleInventory;
+        public InputActionMap Get() { return m_Wrapper.m_Inventory; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InventoryActions set) { return set.Get(); }
+        public void SetCallbacks(IInventoryActions instance)
+        {
+            if (m_Wrapper.m_InventoryActionsCallbackInterface != null)
+            {
+                @ToggleInventory.started -= m_Wrapper.m_InventoryActionsCallbackInterface.OnToggleInventory;
+                @ToggleInventory.performed -= m_Wrapper.m_InventoryActionsCallbackInterface.OnToggleInventory;
+                @ToggleInventory.canceled -= m_Wrapper.m_InventoryActionsCallbackInterface.OnToggleInventory;
+            }
+            m_Wrapper.m_InventoryActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @ToggleInventory.started += instance.OnToggleInventory;
+                @ToggleInventory.performed += instance.OnToggleInventory;
+                @ToggleInventory.canceled += instance.OnToggleInventory;
+            }
+        }
+    }
+    public InventoryActions @Inventory => new InventoryActions(this);
     public interface IMovementActions
     {
         void OnNorth(InputAction.CallbackContext context);
@@ -306,5 +370,9 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
     public interface IInteractionsActions
     {
         void OnGrabItem(InputAction.CallbackContext context);
+    }
+    public interface IInventoryActions
+    {
+        void OnToggleInventory(InputAction.CallbackContext context);
     }
 }

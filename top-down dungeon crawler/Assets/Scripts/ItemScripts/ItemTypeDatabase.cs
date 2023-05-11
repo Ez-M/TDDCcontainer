@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New ItemTypeDatabase", menuName = "ItemTypeDatabase")]
+[ExecuteAlways]
 
 public class ItemTypeDatabase : ScriptableObject, ISerializationCallbackReceiver
 {
-    [SerializeReference]
     public ItemObject[] Items;
     [SerializeField]
     private Dictionary<int, ItemObject> itemsByCode = new Dictionary<int, ItemObject>();
@@ -16,14 +16,16 @@ public class ItemTypeDatabase : ScriptableObject, ISerializationCallbackReceiver
     private static ItemTypeDatabase instance;
     public static ItemTypeDatabase Instance {get => instance;}
 
-    private void Awake()
-    {
-        verifyInstanceSingleton();
-    }
 
     private void OnEnable()
     {
+
         verifyInstanceSingleton();
+        for (int i = 0; i < itemsByCode.Keys.Count; i++)
+        {
+            itemsByCode[i].BaseItem.SetItemCode(itemsByCode[i].ItemCode);
+        }
+
     }
 
     
@@ -44,7 +46,8 @@ public class ItemTypeDatabase : ScriptableObject, ISerializationCallbackReceiver
     {
         for (int i = 0; i < Items.Length; i++)
         {
-            Items[i].BaseItem.SetItemCode(i);
+            Items[i].SetItemCode(i);
+
             itemsByCode.Add(i, Items[i]);
         }
     }

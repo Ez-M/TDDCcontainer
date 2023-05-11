@@ -21,6 +21,7 @@ public enum Attributes
 }
 
 [CreateAssetMenu(fileName = "New ItemObject", menuName = "Inventory System/Items/ItemObject")]
+[ExecuteAlways]
 public class ItemObject : ScriptableObject
 {
 
@@ -36,9 +37,15 @@ public class ItemObject : ScriptableObject
 
 
     [SerializeField]
-    protected ItemData baseItem;
-    public ItemData BaseItem { get => baseItem; }
+    private ItemData baseItem;
+    public ItemData BaseItem { get => baseItem;}
     public int inventorySize;
+
+    [SerializeField]
+    protected int itemCode;   //tracks the base object this is, the code you would use to spawn it
+    public int ItemCode { get => itemCode; }
+
+
 
     public virtual ItemData OnGrab(ItemData _baseItem, Entity _grabber)
     {
@@ -55,7 +62,10 @@ public class ItemObject : ScriptableObject
         return _baseItem;
     }
 
-
+    public void SetItemCode(int _value)
+    {
+        itemCode = _value;
+    }
 }
 
 [Serializable]

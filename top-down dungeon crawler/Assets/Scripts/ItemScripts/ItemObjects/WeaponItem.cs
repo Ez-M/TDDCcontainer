@@ -8,9 +8,9 @@ public class WeaponItem : ItemObject
 
     // public float attackBonus;
     // public float defenseBonus;
-    public void Awake()
+    public void OnEnable()
     {
-        BaseItem.Type = ItemType.Consumable;
+        BaseItem.Type = ItemType.Weapon;
     }
 
     public override ItemData OnUse(ItemData _baseItem, Entity _user)

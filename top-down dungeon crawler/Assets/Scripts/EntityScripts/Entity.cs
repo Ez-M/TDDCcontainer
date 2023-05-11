@@ -31,9 +31,10 @@ public abstract class Entity : MonoBehaviour
     protected InventoryObject inventoryObject;
     public InventoryObject InventoryObject{get => inventoryObject;}
 
-    [SerializeField]
+
     protected SpriteRenderer spriteRenderer;
     [SerializeField]
+
     protected Sprite sprite;
 
     

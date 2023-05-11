@@ -31,6 +31,11 @@ public class ItemObject : ScriptableObject
     //A generic GameObject with a SpriteRenderer and an <Entity>GroundItem component that isPickable and returns an ItemData when picked up
     //ItemData = 
     //contains the relevant information for the instance of an item, including Durabilty/Uses, item type, etc. 
+
+    [SerializeField]
+    protected String itemName;
+    public String ItemName { get => itemName;}
+    
     [SerializeField]
     protected Sprite sprite;
     public Sprite Sprite { get => sprite; }
@@ -91,17 +96,14 @@ public class ItemData
         itemID = -1;
         itemCode = -1;
     }
-    public ItemData(ItemData _itemData)
+
+    public ItemData(ItemObject _itemObject)
     {
-        Name = _itemData.Name;
-        itemID = _itemData.itemID;
-        itemCode = _itemData.itemCode;
+        Name = _itemObject.name;
+        // itemID = _itemObject.ItemID;
+        itemCode = _itemObject.ItemCode;
     }
 
-    public void SetItemCode(int _value)
-    {
-        itemCode = _value;
-    }
 
 }
 

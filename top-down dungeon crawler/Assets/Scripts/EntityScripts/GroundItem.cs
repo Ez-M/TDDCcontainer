@@ -18,7 +18,7 @@ public class GroundItem : Entity
 
     public override void InitStats()
     {
-        itemData = new ItemData(itemObject.BaseItem);
+        itemData = new ItemData(itemObject);
         sprite = itemObject.Sprite;
         isPickable = true;
     }

@@ -19,13 +19,7 @@ public class ItemTypeDatabase : ScriptableObject, ISerializationCallbackReceiver
 
     private void OnEnable()
     {
-
         verifyInstanceSingleton();
-        for (int i = 0; i < itemsByCode.Keys.Count; i++)
-        {
-            itemsByCode[i].BaseItem.SetItemCode(itemsByCode[i].ItemCode);
-        }
-
     }
 
     

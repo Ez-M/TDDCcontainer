@@ -132,7 +132,7 @@ public class GridManager : MonoBehaviour
 [Serializable]
 public class TileContainer
 {
-    [SerializeReference]
+    // [SerializeReference]
     public List<Entity> contents = new List<Entity>();
     // public bool blocksMovement = false;
 }

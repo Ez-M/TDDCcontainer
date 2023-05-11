@@ -31,12 +31,12 @@ public class ItemObject : ScriptableObject
     //ItemData = 
     //contains the relevant information for the instance of an item, including Durabilty/Uses, item type, etc. 
     [SerializeField]
-    private Sprite sprite;
+    protected Sprite sprite;
     public Sprite Sprite { get => sprite; }
 
 
     [SerializeField]
-    private ItemData baseItem;
+    protected ItemData baseItem;
     public ItemData BaseItem { get => baseItem; }
     public int inventorySize;
 

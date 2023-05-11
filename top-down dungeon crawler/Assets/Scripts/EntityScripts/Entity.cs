@@ -10,29 +10,29 @@ using UnityEditor;
 public abstract class Entity : MonoBehaviour
 {
     public static int nextId = 1;
-    private int id;
+    protected int id;
 
     public int ID { get => id;}
 
-    private GridManager gridManager;
+    protected GridManager gridManager;
 
     [SerializeField]
-    private bool blocksMovement;
+    protected bool blocksMovement;
 
     public bool BlocksMovement{get => blocksMovement;}
     public bool isPickable;
 
     public bool IsPickable{get => isPickable;}
 
-    private Health health;
+    protected Health health;
     public Health Health {get => health;}
     
     [SerializeField]
-    private InventoryObject inventoryObject;
+    protected InventoryObject inventoryObject;
     public InventoryObject InventoryObject{get => inventoryObject;}
 
-    public SpriteRenderer spriteRenderer;
-    public Sprite sprite;
+    protected SpriteRenderer spriteRenderer;
+    protected Sprite sprite;
 
     
 

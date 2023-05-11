@@ -129,7 +129,7 @@ public partial class @Inputs : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""19e998b7-3d81-4d54-977e-7df0e8ea94d8"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/g"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

@@ -18,6 +18,7 @@ public class TestMonster : Entity
 
     public override void InitStats()
     {
+        this.blocksMovement = true;
         Health.SetBaseHealth(10);
         Health.ResetToBase();
     }

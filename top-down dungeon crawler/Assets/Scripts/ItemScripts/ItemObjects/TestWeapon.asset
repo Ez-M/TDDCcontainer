@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1f031086083d04ea05fd5868f0884a, type: 3}
   m_Name: TestWeapon
   m_EditorClassIdentifier: 
+  itemName: TestWeapon
   sprite: {fileID: 21300000, guid: 68e5a78013e33f247822a837e55b0ab4, type: 3}
-  baseItem:
-    Name: Test Weapon
-    Type: 2
-    itemID: -1
-    itemCode: 1
   inventorySize: 0
+  itemCode: 1
+  itemType: 2

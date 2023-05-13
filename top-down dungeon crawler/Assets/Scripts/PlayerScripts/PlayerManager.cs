@@ -15,6 +15,8 @@ public class PlayerManager : MonoBehaviour
     private PlayerInventoryHandler playerInventoryHandler;
     private PlayerInventoryHandler PlayerInventoryHandler {get => playerInventoryHandler;}
 
+    public InventoryUI inventoryUI;
+
     private Inputs inputs;
     public Inputs Inputs {get => inputs;}
 
@@ -34,11 +36,15 @@ public class PlayerManager : MonoBehaviour
         inputs.Movement.West.performed += WestFunc;
         inputs.Movement.East.performed += EastFunc;
         inputs.Interactions.GrabItem.performed += GrabItem;
+        inputs.Inventory.ToggleInventory.performed += ToggleInventory;
+
+        
     }
 
     void OnEnable()
     {
         player.SetInventoryObject(inventoryObject);
+        inventoryUI.InitInventoryUI();
     }
 
         private void Update()
@@ -100,10 +106,16 @@ public class PlayerManager : MonoBehaviour
                     if(slot.item.ItemCode < 0)
                     {
                         slot.UpdateSlot(1, itemToGrab, 1);
+                        inventoryUI.UpdateUI();
                         return;
                     }
                 }
             }
+        }
+
+        public void ToggleInventory(InputAction.CallbackContext ctx)
+        {
+            inventoryUI.toggleUI();
         }
 
     #endregion

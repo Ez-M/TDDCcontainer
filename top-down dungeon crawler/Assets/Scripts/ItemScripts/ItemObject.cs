@@ -35,21 +35,24 @@ public class ItemObject : ScriptableObject
     [SerializeField]
     protected String itemName;
     public String ItemName { get => itemName;}
-    
+
     [SerializeField]
     protected Sprite sprite;
     public Sprite Sprite { get => sprite; }
 
 
-    [SerializeField]
-    private ItemData baseItem;
-    public ItemData BaseItem { get => baseItem;}
+    // [SerializeField]
+    // private ItemData baseItem;
+    // public ItemData BaseItem { get => baseItem;}
     public int inventorySize;
 
     [SerializeField]
     protected int itemCode;   //tracks the base object this is, the code you would use to spawn it
     public int ItemCode { get => itemCode; }
 
+    [SerializeField]
+    protected ItemType itemType;
+    public ItemType ItemType { get => itemType; }
 
 
     public virtual ItemData OnGrab(ItemData _baseItem, Entity _grabber)
@@ -81,12 +84,15 @@ public class ItemData
     public ItemType Type;
 
     [SerializeField]
-    private int itemID; //trakcs which individual item this is
+    protected int itemID; //trakcs which individual item this is
     public int ItemID { get => itemID; }
 
     [SerializeField]
-    private int itemCode;   //tracks the base object this is, the code you would use to spawn it
+    protected int itemCode;   //tracks the base object this is, the code you would use to spawn it
     public int ItemCode { get => itemCode; }
+    [SerializeField]
+    protected ItemObject itemObject;
+    public ItemObject ItemObject{get => itemObject;}
 
     public Dictionary<string, int> Effects;
 
@@ -95,6 +101,7 @@ public class ItemData
         Name = "";
         itemID = -1;
         itemCode = -1;
+        itemObject = null;
     }
 
     public ItemData(ItemObject _itemObject)
@@ -102,6 +109,7 @@ public class ItemData
         Name = _itemObject.name;
         // itemID = _itemObject.ItemID;
         itemCode = _itemObject.ItemCode;
+        itemObject = _itemObject;
     }
 
 

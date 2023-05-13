@@ -10,7 +10,7 @@ public class WeaponItem : ItemObject
     // public float defenseBonus;
     public void OnEnable()
     {
-        BaseItem.Type = ItemType.Weapon;
+        itemType = ItemType.Weapon;
     }
 
     public override ItemData OnUse(ItemData _baseItem, Entity _user)

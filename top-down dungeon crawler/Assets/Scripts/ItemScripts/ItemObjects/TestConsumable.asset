@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930784dbb0d49e9499c87a34b314933f, type: 3}
   m_Name: TestConsumable
   m_EditorClassIdentifier: Assembly-CSharp::EquipmentObject
+  itemName: TestConsumable
   sprite: {fileID: 21300000, guid: 02800fb9cff14da47a04572790384d8b, type: 3}
-  baseItem:
-    Name: Test Consumable
-    Type: 0
-    itemID: -1
-    itemCode: -1
   inventorySize: 0
+  itemCode: 0
+  itemType: 0

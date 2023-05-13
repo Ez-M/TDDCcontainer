@@ -11,7 +11,7 @@ public class ConsumableItem : ItemObject
 
     public void OnEnable()
     {
-        BaseItem.Type = ItemType.Consumable;
+        itemType = ItemType.Consumable;
 
     }
 

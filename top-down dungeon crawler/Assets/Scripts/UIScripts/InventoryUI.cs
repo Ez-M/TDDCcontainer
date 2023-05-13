@@ -94,10 +94,10 @@ public class InventoryUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
         if(eventObject.GetComponent<InventoryUISlot>())
         {
-            Debug.Log(eventObject);
             PlayerInventoryHandler playerInventoryHandler = PlayerManager.Instance.PlayerInventoryHandler; 
             playerInventoryHandler.mouseItem.hoverUISlot = eventObject;
-            playerInventoryHandler.mouseItem.hoverDataSlot = playerInventoryHandler.inventory.inventory.Slots[System.Array.IndexOf(UIslots, eventObject)];
+            int indextOfData = System.Array.IndexOf(UIslots, eventObject);
+            playerInventoryHandler.mouseItem.hoverDataSlot = inventoryObject.inventory.Slots[indextOfData];
 
         }
 
@@ -106,8 +106,8 @@ public class InventoryUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     public void OnPointerExit(PointerEventData _pointerEventData)
     {
             PlayerInventoryHandler playerInventoryHandler = PlayerManager.Instance.PlayerInventoryHandler; 
-            playerInventoryHandler.mouseItem.hoverUISlot = null;
-            playerInventoryHandler.mouseItem.hoverDataSlot = null;
+            // playerInventoryHandler.mouseItem.hoverUISlot = null;
+            // playerInventoryHandler.mouseItem.hoverDataSlot = null;
 
     }
 
@@ -124,7 +124,8 @@ public class InventoryUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         if(eventObject.GetComponent<InventoryUISlot>())
         {
             playerInventoryHandler.mouseItem.draggedUISlot = eventObject;
-            playerInventoryHandler.mouseItem.draggedDataSlot = playerInventoryHandler.inventory.inventory.Slots[System.Array.IndexOf(UIslots, eventObject)];
+            int indextOfData = System.Array.IndexOf(UIslots, eventObject);
+            playerInventoryHandler.mouseItem.draggedDataSlot = inventoryObject.inventory.Slots[indextOfData];
         }
 
 
@@ -137,17 +138,19 @@ public class InventoryUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     {
 
 
-
         
-            
         PlayerInventoryHandler playerInventoryHandler = PlayerManager.Instance.PlayerInventoryHandler; 
-        if(playerInventoryHandler.mouseItem.draggedDataSlot != null && playerInventoryHandler.mouseItem.draggedUISlot != null)
+        if(playerInventoryHandler.mouseItem.draggedDataSlot != null && playerInventoryHandler.mouseItem.hoverDataSlot != null && playerInventoryHandler.mouseItem.draggedDataSlot != playerInventoryHandler.mouseItem.hoverDataSlot)
         {
-            var oldItem = playerInventoryHandler.mouseItem.draggedDataSlot;
-            var newItem = playerInventoryHandler.mouseItem.hoverDataSlot;
-            var dataSlotsArray = playerInventoryHandler.inventory.inventory.Slots;
-            dataSlotsArray[System.Array.IndexOf(dataSlotsArray, oldItem)] = newItem;
-            dataSlotsArray[System.Array.IndexOf(dataSlotsArray, newItem)] = oldItem;
+            Debug.Log("DRAGENDCHECK");
+            InventorySlot oldItem = playerInventoryHandler.mouseItem.draggedDataSlot;
+            InventorySlot newItem = playerInventoryHandler.mouseItem.hoverDataSlot;
+            var dataSlotsArray = inventoryObject.inventory.Slots;
+            int oldIndex = System.Array.IndexOf(dataSlotsArray, oldItem);
+            int newIndex = System.Array.IndexOf(dataSlotsArray, newItem);
+
+            dataSlotsArray[oldIndex] = newItem;
+            dataSlotsArray[newIndex] = oldItem;
 
             UpdateUI();
         }

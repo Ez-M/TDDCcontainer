@@ -25,13 +25,14 @@ public class InventoryUISlot : MonoBehaviour
 
         if (_inventorySlot.item.ItemObject != null)
         { image.sprite = _inventorySlot.item.ItemObject.Sprite; }
+        else{image.sprite = null;}
     }
     public void UpdateAmount(InventorySlot _inventorySlot)
     {
         if (_inventorySlot.amount >= 0)
         {
             AmountTextComponent.text = _inventorySlot.amount.ToString();
-        }
+        } else {AmountTextComponent.text = "";}
     }
 
 }

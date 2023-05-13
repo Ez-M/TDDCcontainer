@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class PlayerInventoryHandler : MonoBehaviour
 {
@@ -26,12 +28,12 @@ public class PlayerInventoryHandler : MonoBehaviour
     // }
 }
 
-
+[Serializable]
 public class MouseItem
 {
     // public UserInterface UI;
-    public GameObject tileObj;
-    public InventorySlot item;
-    public InventorySlot hoverSlot;
-    public GameObject hoverObj;
+    public GameObject draggedUISlot;
+    public InventorySlot draggedDataSlot;
+    public InventorySlot hoverDataSlot;
+    public GameObject hoverUISlot;
 }

@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
 
-public class InventoryUI : MonoBehaviour
+public class InventoryUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     [SerializeField]
     protected GameObject UIpanel;
@@ -43,7 +44,7 @@ public class InventoryUI : MonoBehaviour
             
         }
     }
-
+#region open&close
     public void OpenUI()
     {
         if (UIpanel != null)
@@ -52,6 +53,8 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
+    
+
     public void CloseUI()
     {
         if (UIpanel != null)
@@ -59,7 +62,11 @@ public class InventoryUI : MonoBehaviour
             UIpanel.SetActive(false);
         }
     }
-
+        public void toggleUI()
+    {
+        UIpanel.SetActive(!UIpanel.activeInHierarchy);
+    }
+    #endregion
     public void UpdateUI()
     {
         for (int i = 0; i < inventoryObject.inventory.Slots.Length; i++)
@@ -72,11 +79,90 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    public void toggleUI()
+
+#region clickStuff
+
+    public void OnPointerClick(PointerEventData _pointerEventData)
     {
-        UIpanel.SetActive(!UIpanel.activeInHierarchy);
     }
 
+    public void OnPointerEnter(PointerEventData _pointerEventData)
+    {
+
+        GameObject eventObject = _pointerEventData.pointerEnter;
+
+
+        if(eventObject.GetComponent<InventoryUISlot>())
+        {
+            Debug.Log(eventObject);
+            PlayerInventoryHandler playerInventoryHandler = PlayerManager.Instance.PlayerInventoryHandler; 
+            playerInventoryHandler.mouseItem.hoverUISlot = eventObject;
+            playerInventoryHandler.mouseItem.hoverDataSlot = playerInventoryHandler.inventory.inventory.Slots[System.Array.IndexOf(UIslots, eventObject)];
+
+        }
+
+        
+    }
+    public void OnPointerExit(PointerEventData _pointerEventData)
+    {
+            PlayerInventoryHandler playerInventoryHandler = PlayerManager.Instance.PlayerInventoryHandler; 
+            playerInventoryHandler.mouseItem.hoverUISlot = null;
+            playerInventoryHandler.mouseItem.hoverDataSlot = null;
+
+    }
+
+        public void OnDrag(PointerEventData _pointerEventData)
+    {
+
+    }
+
+    public void OnBeginDrag(PointerEventData _pointerEventData)
+    {
+
+            PlayerInventoryHandler playerInventoryHandler = PlayerManager.Instance.PlayerInventoryHandler; 
+            GameObject eventObject = playerInventoryHandler.mouseItem.hoverUISlot;
+        if(eventObject.GetComponent<InventoryUISlot>())
+        {
+            playerInventoryHandler.mouseItem.draggedUISlot = eventObject;
+            playerInventoryHandler.mouseItem.draggedDataSlot = playerInventoryHandler.inventory.inventory.Slots[System.Array.IndexOf(UIslots, eventObject)];
+        }
+
+
+
+
+    }
+
+
+    public void OnEndDrag(PointerEventData _pointerEventData)
+    {
+
+
+
+        
+            
+        PlayerInventoryHandler playerInventoryHandler = PlayerManager.Instance.PlayerInventoryHandler; 
+        if(playerInventoryHandler.mouseItem.draggedDataSlot != null && playerInventoryHandler.mouseItem.draggedUISlot != null)
+        {
+            var oldItem = playerInventoryHandler.mouseItem.draggedDataSlot;
+            var newItem = playerInventoryHandler.mouseItem.hoverDataSlot;
+            var dataSlotsArray = playerInventoryHandler.inventory.inventory.Slots;
+            dataSlotsArray[System.Array.IndexOf(dataSlotsArray, oldItem)] = newItem;
+            dataSlotsArray[System.Array.IndexOf(dataSlotsArray, newItem)] = oldItem;
+
+            UpdateUI();
+        }
+        // old object is held, new is hovered
+        
+        //set old = hovered, set hovered = held
+
+        playerInventoryHandler.mouseItem.draggedDataSlot = null;
+        playerInventoryHandler.mouseItem.draggedUISlot = null;
+
+        
+
+    }
+
+#endregion
 
 
 }

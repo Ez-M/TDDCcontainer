@@ -226,8 +226,8 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!4 &14002607
-Transform:
+--- !u!224 &14002607
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -241,6 +241,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &684257485 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7447937806552476676, guid: 59e3d3c1d3f119d4e906d734f122b4ba, type: 3}
@@ -259,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIpanel: {fileID: 1559585973}
-  SlotPrefab: {fileID: 5803640932562606663, guid: bb796a09939061b47bdb9fd3d36d9795, type: 3}
+  SlotPrefab: {fileID: 4401377931600400554, guid: bb796a09939061b47bdb9fd3d36d9795, type: 3}
   UIslots: []
   inventoryObject: {fileID: 11400000, guid: 39b324a18c6374548ba5630c6af7aa0a, type: 2}
 --- !u!1 &696693247 stripped
@@ -619,6 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 696693249}
+  playerInventoryHandler: {fileID: 1388389122}
   inventoryUI: {fileID: 684257490}
 --- !u!114 &1388389122
 MonoBehaviour:
@@ -633,6 +639,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: 39b324a18c6374548ba5630c6af7aa0a, type: 2}
+  mouseItem:
+    draggedUISlot: {fileID: 0}
+    draggedDataSlot:
+      AllowedItems: 
+      ID: -1
+      item:
+        Name: 
+        Type: 0
+        itemID: -1
+        itemCode: -1
+        itemObject: {fileID: 0}
+      amount: 0
+    hoverDataSlot:
+      AllowedItems: 
+      ID: -1
+      item:
+        Name: 
+        Type: 0
+        itemID: -1
+        itemCode: -1
+        itemObject: {fileID: 0}
+      amount: 0
+    hoverUISlot: {fileID: 0}
 --- !u!1 &1451747356
 GameObject:
   m_ObjectHideFlags: 0
@@ -9203,7 +9232,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 0, y: 0}
+  m_Spacing: {x: 2, y: 2}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1 &1607970171
@@ -9592,9 +9621,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7447937805147093116, guid: 59e3d3c1d3f119d4e906d734f122b4ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7447937805147093118, guid: 59e3d3c1d3f119d4e906d734f122b4ba, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7447937806552476676, guid: 59e3d3c1d3f119d4e906d734f122b4ba, type: 3}
       propertyPath: m_Name
       value: Inventory Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7447937806552476679, guid: 59e3d3c1d3f119d4e906d734f122b4ba, type: 3}
+      propertyPath: m_BlockingObjects
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7447937806552476696, guid: 59e3d3c1d3f119d4e906d734f122b4ba, type: 3}
       propertyPath: m_Pivot.x

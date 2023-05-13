@@ -11,9 +11,9 @@ public class PlayerManager : MonoBehaviour
 
     private InventoryObject inventoryObject;
     public InventoryObject InventoryObject {get => inventoryObject;}
-
+    [SerializeField]
     private PlayerInventoryHandler playerInventoryHandler;
-    private PlayerInventoryHandler PlayerInventoryHandler {get => playerInventoryHandler;}
+    public PlayerInventoryHandler PlayerInventoryHandler {get => playerInventoryHandler;}
 
     public InventoryUI inventoryUI;
 
@@ -22,13 +22,16 @@ public class PlayerManager : MonoBehaviour
 
     private GridManager gridManager;
 
+    private static PlayerManager instance;
+    public static PlayerManager Instance{get => instance;}
+
 
     void Awake()
     {
+        verifyInstanceSingleton();
         gridManager = GridManager.Instance;
         playerInventoryHandler = gameObject.GetComponent<PlayerInventoryHandler>();
         inventoryObject = playerInventoryHandler.inventory;
-
         inputs = new Inputs();
         inputs.Enable();
         inputs.Movement.North.performed += NorthFunc;
@@ -56,6 +59,18 @@ public class PlayerManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.X))
         {
             inventoryObject.Load();
+        }
+    }
+
+        private void verifyInstanceSingleton()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
         }
     }
 
